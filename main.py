@@ -1,14 +1,12 @@
-import os
-
+import psycopg
 from rich import print as rprint
 from rich import prompt as rprompt
 from simple_term_menu import TerminalMenu
 
+from models.client import Client
 from models.Tools import Tools
-from models.Client import Client
-
-from server.db.clients import create_client 
 from server.db.check import check_database_connection
+from server.db.clients import create_client
 
 def main():
     check_database_connection()
@@ -28,19 +26,24 @@ def main():
             if client_choice == 0:
                 name = rprompt.Prompt.ask("Enter client name")
 
-                if not name:
+                if not name.strip():
                     rprint("[bold red]Client name cannot be empty.[/bold red]")
                     rprompt.Prompt.ask("Press Enter to return to the main menu...")
                     continue
 
-                client_id = create_client(name)
+                rprint(f"[bold green]Creating client '{name}'...[/bold green]")
+                try:
+                    client_id = create_client(name)
+                except psycopg.Error as e:
+                    client_id = None
+                    rprint(f"[bold red]Failed to create client '{name}': {e}[/bold red]")
 
                 if client_id is not None:
                     clients[client_id] = Client(client_id, name)
                     rprint(f"[bold green]Client '{name}' created with ID: {client_id}[/bold green]")
 
                 rprompt.Prompt.ask("Press Enter to return to the main menu...")
-        if choice == 1:
+        elif choice == 1 or choice is None:
             break
 
 if __name__ == "__main__":
