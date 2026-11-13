@@ -2,7 +2,6 @@ import os
 import subprocess
 import time
 
-
 class Tools:
     @staticmethod
     def clear():

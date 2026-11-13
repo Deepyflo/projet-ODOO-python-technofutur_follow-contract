@@ -4,7 +4,6 @@ from rich.table import Table
 
 console = Console()
 
-
 def display_header():
     console.print(
         Panel(

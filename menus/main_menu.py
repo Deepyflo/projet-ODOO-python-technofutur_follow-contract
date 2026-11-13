@@ -1,5 +1,4 @@
 from simple_term_menu import TerminalMenu
-
 from menus.client_menu import client_menu
 from menus.plan_menu import plan_menu
 from ui.display import display_header
