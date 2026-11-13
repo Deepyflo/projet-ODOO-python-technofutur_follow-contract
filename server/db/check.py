@@ -2,6 +2,7 @@ import psycopg
 
 from server.db.db import get_connection
 
+
 def check_database_connection():
     with get_connection() as conn, conn.cursor() as cur:
         try:

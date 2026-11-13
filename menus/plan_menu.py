@@ -1,13 +1,14 @@
-from simple_term_menu import TerminalMenu
-from rich.prompt import Prompt
-from rich import print as rprint
-from ui.helpers import pause
-from ui.display import display_header
-from ui.display import display_Plans
-from server.db.plans import create_plan, get_all_plans
-from models.Tools import Tools
-from models.plan import Plan
 import psycopg
+from rich import print as rprint
+from rich.prompt import Prompt
+from simple_term_menu import TerminalMenu
+
+from models.plan import Plan
+from models.Tools import Tools
+from server.db.plans import create_plan, get_all_plans
+from ui.display import display_header, display_Plans
+from ui.helpers import pause
+
 
 def plan_menu():
     Tools.clear()

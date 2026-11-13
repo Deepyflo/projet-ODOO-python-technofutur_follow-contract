@@ -1,5 +1,6 @@
 from server.db.db import get_connection
 
+
 def create_plan(name, price, quota):
     with get_connection() as conn, conn.cursor() as cur:
         cur.execute("INSERT INTO plans (name, price, quota) VALUES (%s, %s, %s) RETURNING id;", (name, price, quota))

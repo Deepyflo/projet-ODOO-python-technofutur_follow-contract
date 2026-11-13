@@ -1,10 +1,12 @@
-from rich.prompt import Prompt
-from rich import print as rprint
-from ui.helpers import pause
-from ui.display import display_header
-from server.db.clients import create_client
-from models.Tools import Tools
 import psycopg
+from rich import print as rprint
+from rich.prompt import Prompt
+
+from models.Tools import Tools
+from server.db.clients import create_client
+from ui.display import display_header
+from ui.helpers import pause
+
 
 def create_client_menu():
     Tools.clear()

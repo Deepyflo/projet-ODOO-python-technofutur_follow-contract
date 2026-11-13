@@ -1,10 +1,11 @@
 from simple_term_menu import TerminalMenu
-from models.Tools import Tools
-from ui.display import display_header
+
 from menus.client_actions import create_client_menu
-from server.db.clients import get_all_clients
-from ui.display import display_clients
 from models.client import Client
+from models.Tools import Tools
+from server.db.clients import get_all_clients
+from ui.display import display_clients, display_header
+
 
 def client_menu():
     while True:
