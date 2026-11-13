@@ -11,18 +11,19 @@ from ui.helpers import pause
 
 
 def plan_menu():
-    Tools.clear()
-    display_header()
-
-    result_plans = get_all_plans()
-    plans = []
-
-    for plan in result_plans:
-        plans.append(Plan(plan[0], plan[1], plan[2], plan[3]))
-
-    display_Plans(plans)
 
     while True:
+        Tools.clear()
+        display_header()
+
+        result_plans = get_all_plans()
+        plans = []
+
+        for plan in result_plans:
+            plans.append(Plan(plan[0], plan[1], plan[2], plan[3]))
+
+        display_Plans(plans)
+        
         choice = TerminalMenu(
             [
                 "Create plan",
